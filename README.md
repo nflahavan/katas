@@ -1,0 +1,1 @@
+A bunch of TDD katas with my solutions.
