@@ -1,5 +1,5 @@
 func addNumbers(_ numbers: String) -> Int {
-  return Int.min
+  return 0
 }
 
 import XCTest
