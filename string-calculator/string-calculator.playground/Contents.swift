@@ -17,7 +17,7 @@ func addNumbers(_ numbers: String) throws -> Int {
   return try separatedNumbers.reduce(0) {
     let number = Int($1) ?? 0
     
-    guard number >= 0 else { throw AddNumbersError.negativesNotAllowed(-1) }
+    guard number >= 0 else { throw AddNumbersError.negativesNotAllowed(number) }
     
     return $0 + (Int($1) ?? 0)
   }
