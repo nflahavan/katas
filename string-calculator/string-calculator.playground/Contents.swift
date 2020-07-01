@@ -1,4 +1,5 @@
 func addNumbers(_ numbers: String) -> Int {
+func addNumbers(_ numbers: String) throws -> Int {
   var seperators: CharacterSet
   let separatedNumbers: [String]
   
@@ -16,32 +17,32 @@ func addNumbers(_ numbers: String) -> Int {
 import XCTest
 
 class Tests: XCTestCase {
-  func testEmptyStringIsZero() {
-    let actual = addNumbers("")
+  func testEmptyStringIsZero() throws {
+    let actual = try addNumbers("")
     let expected = 0
     XCTAssertEqual(actual, expected)
   }
   
-  func testOneIsOne() {
-    let actual = addNumbers("1")
+  func testOneIsOne() throws {
+    let actual = try addNumbers("1")
     let expected = 1
     XCTAssertEqual(actual, expected)
   }
   
-  func testOnePlusOnePlusOneIsThree() {
-    let actual = addNumbers("1,1,1")
+  func testOnePlusOnePlusOneIsThree() throws {
+    let actual = try addNumbers("1,1,1")
     let expected = 3
     XCTAssertEqual(actual, expected)
   }
   
-  func testOneNewLineOneCommaOneIsThree() {
-    let actual = addNumbers("1\n1,1")
+  func testOneNewLineOneCommaOneIsThree() throws {
+    let actual = try addNumbers("1\n1,1")
     let expected = 3
     XCTAssertEqual(actual, expected)
   }
   
-  func testOneProvidedDelimiterOneIsTwo() {
-    let actual = addNumbers("//;\n1;1")
+  func testOneProvidedDelimiterOneIsTwo() throws {
+    let actual = try addNumbers("//;\n1;1")
     let expected = 2
     XCTAssertEqual(actual, expected)
   }
