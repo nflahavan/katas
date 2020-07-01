@@ -45,6 +45,15 @@ class Tests: XCTestCase {
     let expected = 2
     XCTAssertEqual(actual, expected)
   }
+  
+  func testNegativeNumbersNotAllowed() {
+    do {
+      _ = try addNumbers("-1,-2")
+      XCTFail()
+    } catch {
+      // test passed
+    }
+  }
 }
 
 Tests.defaultTestSuite.run()
