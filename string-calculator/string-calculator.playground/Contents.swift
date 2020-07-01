@@ -30,6 +30,12 @@ class Tests: XCTestCase {
     let expected = 3
     XCTAssertEqual(actual, expected)
   }
+  
+  func testOneProvidedDelimiterOneIsTwo() {
+    let actual = addNumbers("//;\n1;1")
+    let expected = 2
+    XCTAssertEqual(actual, expected)
+  }
 }
 
 Tests.defaultTestSuite.run()
