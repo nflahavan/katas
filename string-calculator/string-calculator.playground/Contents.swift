@@ -1,5 +1,6 @@
 func addNumbers(_ numbers: String) -> Int {
-  let separatedNumbers = numbers.components(separatedBy: ",")
+  let seperators = CharacterSet(arrayLiteral: ",","\n")
+  let separatedNumbers = numbers.components(separatedBy: seperators)
   return separatedNumbers.reduce(0) { $0 + (Int($1) ?? 0) }
 }
 
@@ -18,21 +19,9 @@ class Tests: XCTestCase {
     XCTAssertEqual(actual, expected)
   }
   
-  func testOnePlusOneIsTwo() {
-    let actual = addNumbers("1,1")
-    let expected = 2
-    XCTAssertEqual(actual, expected)
-  }
-  
   func testOnePlusOnePlusOneIsThree() {
     let actual = addNumbers("1,1,1")
     let expected = 3
-    XCTAssertEqual(actual, expected)
-  }
-  
-  func testNegativeTwoPlusOneIsNegativeOne() {
-    let actual = addNumbers("-2,1")
-    let expected = -1
     XCTAssertEqual(actual, expected)
   }
   
