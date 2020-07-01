@@ -14,16 +14,22 @@ func addNumbers(_ numbers: String) throws -> Int {
     separatedNumbers = numbers.components(separatedBy: seperators)
   }
   
-  return try separatedNumbers.reduce(0) {
-    let number = Int($1) ?? 0
+  var validNums = [Int]()
+  var invalidNums = [Int]()
+  
+  for number in separatedNumbers {
+    let num = Int(number) ?? 0
     
-    guard number >= 0 else {
-      
-      throw AddNumbersError.negativesNotAllowed([number])
+    if num >= 0 {
+      validNums.append(num)
+    } else {
+      invalidNums.append(num)
     }
-    
-    return $0 + (Int($1) ?? 0)
   }
+  
+  guard invalidNums.isEmpty else { throw AddNumbersError.negativesNotAllowed(invalidNums) }
+  
+  return validNums.reduce(0, +)
 }
 
 import XCTest
