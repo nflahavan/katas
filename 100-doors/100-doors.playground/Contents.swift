@@ -10,6 +10,11 @@ func doorStateAfterNPasses(_ n: Int) -> [DoorState] {
 import XCTest
 
 class Tests: XCTestCase {
+  func testZeroPassesTogglesNoDoors() {
+    let actual = doorStateAfterNPasses(0)
+    let expected = Array(repeating: DoorState.closed, count: 100)
+    XCTAssertEqual(actual, expected)
+  }
 }
 
 Tests.defaultTestSuite.run()
