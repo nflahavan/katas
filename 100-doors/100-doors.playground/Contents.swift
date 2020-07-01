@@ -4,7 +4,7 @@ enum DoorState {
 }
 
 func doorStateAfterNPasses(_ n: Int) -> [DoorState] {
-  return []
+  return Array(repeating: DoorState.closed, count: 100)
 }
 
 import XCTest
