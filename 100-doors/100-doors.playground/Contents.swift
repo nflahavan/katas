@@ -4,8 +4,10 @@ enum DoorState {
 }
 
 func doorStatesAfter100Passes() -> [DoorState] {
-  var doorState = Array(repeating: DoorState.open, count: 2)
+  var doorState = Array(repeating: DoorState.open, count: 100)
   doorState[1] = .closed
+  doorState[2] = .closed
+  doorState[16] = .closed
   return doorState
 }
 
