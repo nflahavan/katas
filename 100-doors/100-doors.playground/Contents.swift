@@ -1,13 +1,26 @@
 enum DoorState {
   case open
   case closed
+  
+  mutating func toggle() {
+    switch self {
+    case .open: self = .closed
+    case .closed: self = .open
+    }
+  }
 }
 
 func doorStatesAfter100Passes() -> [DoorState] {
   var doorState = Array(repeating: DoorState.open, count: 100)
-  doorState[1] = .closed
-  doorState[2] = .closed
-  doorState[16] = .closed
+  
+  for visit in 2...100 {
+    var visitt = visit
+    repeat {
+      doorState[visitt - 1].toggle()
+      visitt *= visit
+    } while visitt <= 100
+  }
+  
   return doorState
 }
 
