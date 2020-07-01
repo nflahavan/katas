@@ -10,6 +10,12 @@ class Tests: XCTestCase {
     let expected = 0
     XCTAssertEqual(actual, expected)
   }
+  
+  func testOneIsOne() {
+    let actual = addNumbers("1")
+    let expected = 1
+    XCTAssertEqual(actual, expected)
+  }
 }
 
 Tests.defaultTestSuite.run()
