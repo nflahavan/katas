@@ -1,6 +1,15 @@
 func addNumbers(_ numbers: String) -> Int {
-  let seperators = CharacterSet(arrayLiteral: ",","\n")
-  let separatedNumbers = numbers.components(separatedBy: seperators)
+  var seperators: CharacterSet
+  let separatedNumbers: [String]
+  
+  if numbers.hasPrefix("//") {
+    seperators = CharacterSet(charactersIn: String(numbers[numbers.index(numbers.startIndex, offsetBy: 2)]))
+    separatedNumbers = numbers.dropFirst(4).components(separatedBy: seperators)
+  } else {
+    seperators = CharacterSet(arrayLiteral: ",","\n")
+    separatedNumbers = numbers.components(separatedBy: seperators)
+  }
+  
   return separatedNumbers.reduce(0) { $0 + (Int($1) ?? 0) }
 }
 
