@@ -1,5 +1,5 @@
 enum AddNumbersError: Error {
-  case negativesNotAllowed
+  case negativesNotAllowed(Int)
 }
 
 func addNumbers(_ numbers: String) throws -> Int {
@@ -17,7 +17,7 @@ func addNumbers(_ numbers: String) throws -> Int {
   return try separatedNumbers.reduce(0) {
     let number = Int($1) ?? 0
     
-    guard number >= 0 else { throw AddNumbersError.negativesNotAllowed }
+    guard number >= 0 else { throw AddNumbersError.negativesNotAllowed(-1) }
     
     return $0 + (Int($1) ?? 0)
   }
@@ -58,10 +58,13 @@ class Tests: XCTestCase {
   
   func testNegativeNumbersNotAllowed() {
     do {
-      _ = try addNumbers("-1,-2")
-      XCTFail()
+      _ = try addNumbers("-7,2")
+      XCTFail("Error not thrown")
+    } catch let AddNumbersError.negativesNotAllowed(actual) {
+      let expected = -7
+      XCTAssertEqual(actual, expected)
     } catch {
-      // test passed
+      XCTFail("Wrong error thrown")
     }
   }
 }
