@@ -23,6 +23,24 @@ class Tests: XCTestCase {
     let expected = 2
     XCTAssertEqual(actual, expected)
   }
+  
+  func testOnePlusOnePlusOneIsThree() {
+    let actual = addNumbers("1,1,1")
+    let expected = 3
+    XCTAssertEqual(actual, expected)
+  }
+  
+  func testNegativeTwoPlusOneIsNegativeOne() {
+    let actual = addNumbers("-2,1")
+    let expected = -1
+    XCTAssertEqual(actual, expected)
+  }
+  
+  func testOneNewLineOneCommaOneIsThree() {
+    let actual = addNumbers("1\n1,1")
+    let expected = 3
+    XCTAssertEqual(actual, expected)
+  }
 }
 
 Tests.defaultTestSuite.run()
