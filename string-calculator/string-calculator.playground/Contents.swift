@@ -1,5 +1,6 @@
 func addNumbers(_ numbers: String) -> Int {
-  return Int(numbers) ?? 0
+  let separatedNumbers = numbers.components(separatedBy: ",")
+  return separatedNumbers.reduce(0) { $0 + (Int($1) ?? 0) }
 }
 
 import XCTest
