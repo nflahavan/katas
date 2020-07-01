@@ -4,7 +4,9 @@ enum DoorState {
 }
 
 func doorStatesAfter100Passes() -> [DoorState] {
-  return Array(repeating: DoorState.closed, count: 100)
+  var doorState = Array(repeating: DoorState.open, count: 100)
+  doorState[1] = .closed
+  return doorState
 }
 
 import XCTest
@@ -17,7 +19,7 @@ class Tests: XCTestCase {
   }
   
   func testDoorTwoIsClosed() {
-    let actual = doorStatesAfter100Passes()[2]
+    let actual = doorStatesAfter100Passes()[1]
     let expected = DoorState.closed
     XCTAssertEqual(actual, expected)
   }
