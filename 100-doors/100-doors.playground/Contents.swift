@@ -15,6 +15,12 @@ class Tests: XCTestCase {
     let expected = DoorState.open
     XCTAssertEqual(actual, expected)
   }
+  
+  func testDoorTwoIsClosed() {
+    let actual = doorStatesAfter100Passes()[2]
+    let expected = DoorState.closed
+    XCTAssertEqual(actual, expected)
+  }
 }
 
 Tests.defaultTestSuite.run()
