@@ -1,4 +1,7 @@
-func addNumbers(_ numbers: String) -> Int {
+enum AddNumbersError: Error {
+  case negativesNotAllowed
+}
+
 func addNumbers(_ numbers: String) throws -> Int {
   var seperators: CharacterSet
   let separatedNumbers: [String]
@@ -11,7 +14,13 @@ func addNumbers(_ numbers: String) throws -> Int {
     separatedNumbers = numbers.components(separatedBy: seperators)
   }
   
-  return separatedNumbers.reduce(0) { $0 + (Int($1) ?? 0) }
+  return try separatedNumbers.reduce(0) {
+    let number = Int($1) ?? 0
+    
+    guard number >= 0 else { throw AddNumbersError.negativesNotAllowed }
+    
+    return $0 + (Int($1) ?? 0)
+  }
 }
 
 import XCTest
