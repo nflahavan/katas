@@ -14,11 +14,11 @@ func doorStatesAfter100Passes() -> [DoorState] {
   var doorState = Array(repeating: DoorState.open, count: 100)
   
   for visit in 2...100 {
-    var visitt = visit
+    var currVisit = visit
     repeat {
-      doorState[visitt - 1].toggle()
-      visitt *= visit
-    } while visitt <= 100
+      doorState[currVisit - 1].toggle()
+      currVisit *= visit
+    } while currVisit <= 100
   }
   
   return doorState
